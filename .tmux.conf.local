@@ -160,22 +160,22 @@ tmux_conf_theme_right_separator_sub='|'
 #   - separate subsections with ','
 #   - built-in variables are:
 #     - #{battery_bar}
-#     - #{battery_hbar}
+    # - #{battery_hbar}
 #     - #{battery_percentage}
 #     - #{battery_status}
 #     - #{battery_vbar}
 #     - #{circled_session_name}
 #     - #{hostname_ssh}
 #     - #{hostname}
-#     - #{loadavg}
+    # - #{loadavg}
 #     - #{pairing}
 #     - #{prefix}
 #     - #{root}
 #     - #{synchronized}
-#     - #{uptime_d}
-#     - #{uptime_h}
-#     - #{uptime_m}
-#     - #{uptime_s}
+    # - #{uptime_d}
+    # - #{uptime_h}
+    # - #{uptime_m}
+    # - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
@@ -266,7 +266,7 @@ tmux_conf_theme_clock_style='24'
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -276,7 +276,7 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
@@ -284,11 +284,14 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-# set -gu prefix2
-# unbind C-a
-# unbind C-b
-# set -g prefix C-a
-# bind C-a send-prefix
+set -gu prefix2
+unbind C-a
+unbind C-b
+set -g prefix F1
+bind F1 send-prefix
 
 # move status line to top
-#set -g status-position top
+# set -g status-position top
+
+# personal config
+setw -g mode-keys vi
